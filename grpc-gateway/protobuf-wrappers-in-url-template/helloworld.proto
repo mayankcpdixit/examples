@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package helloworld;
+
+import "google/api/annotations.proto";
+import "google/protobuf/wrappers.proto";
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {
+    option (google.api.http) = {
+      get: "/say/{strVal}"
+    };
+  }
+}
+
+message HelloRequest {
+  google.protobuf.StringValue strVal = 5;
+}
+
+message HelloReply {
+  string message = 1;
+}
